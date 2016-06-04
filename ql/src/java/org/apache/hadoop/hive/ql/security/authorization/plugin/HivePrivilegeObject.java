@@ -236,7 +236,7 @@ public class HivePrivilegeObject implements Comparable<HivePrivilegeObject> {
       }
     }
 
-    return "Object [type=" + type + ", name=" + name + actionTypeStr + "]";
+    return "Object [type=" + type + ", name=" + name + actionTypeStr + ", partKeys=" + partKeys + ", columns=" + columns + " ]";
   }
 
   private String getDbObjectName(String dbname2, String objectName2) {

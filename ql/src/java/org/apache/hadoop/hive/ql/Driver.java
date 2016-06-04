@@ -571,6 +571,7 @@ public class Driver implements CommandProcessor {
           .getTableToColumnAccessMap() : null;
       Map<String, List<String>> updateTab2Cols = sem.getUpdateColumnAccessInfo() != null ?
           sem.getUpdateColumnAccessInfo().getTableToColumnAccessMap() : null;
+      LOG.info("lg: selectTab2Cols= " + selectTab2Cols + ";updateTab2Cols= " + updateTab2Cols);
       doAuthorizationV2(ss, op, inputs, outputs, command, selectTab2Cols, updateTab2Cols);
      return;
     }
@@ -776,6 +777,8 @@ public class Driver implements CommandProcessor {
     List<HivePrivilegeObject> inputsHObjs = getHivePrivObjects(inputs, tab2cols);
     List<HivePrivilegeObject> outputHObjs = getHivePrivObjects(outputs, updateTab2Cols);
 
+    LOG.info("lg: inputsHObjs=" + inputsHObjs);
+    LOG.info("lg: outputHObjs=" + outputHObjs);
     ss.getAuthorizerV2().checkPrivileges(hiveOpType, inputsHObjs, outputHObjs, authzContextBuilder.build());
   }
 
